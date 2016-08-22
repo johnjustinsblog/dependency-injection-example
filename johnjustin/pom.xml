@@ -8,11 +8,83 @@
   <packaging>jar</packaging>
 
   <name>johnjustin</name>
-  <url>http://maven.apache.org</url>
+  <url>http://www.johnjustin.com/${project.artifactId}/</url>
+  	<inceptionYear>${project.inceptionYear}</inceptionYear>
+	<organization>
+		<name>${project.organization.name}</name>
+		<url>${project.organization.url}</url>
+	</organization>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<project.inceptionYear>2016</project.inceptionYear>
+		<project.organization.name>John Justin</project.organization.name>
+		<project.organization.url>http://www.johnjustin.com/</project.organization.url>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<developers>
+		<developer>
+			<id>john</id>
+			<name>John Justin</name>
+			<email>john@johnjustin.com</email>
+			<url>${project.organization.url}</url>
+			<organization>${project.organization.name}</organization>
+			<organizationUrl>${project.organization.url}</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+				<role>writer</role>
+			</roles>
+			<timezone>CST</timezone>
+		</developer>
+	</developers>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>1.8</version>
+				<configuration>
+					<verbose>false</verbose>
+				</configuration>
+				<executions>
+					<execution>
+						<id>first</id>
+						<goals>
+							<goal>update-file-header</goal>
+							<goal>add-third-party</goal>
+						</goals>
+						<phase>process-sources</phase>
+						<configuration>
+							<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+							<licenseName>apache_v2</licenseName>
+							<sortArtifactByName>true</sortArtifactByName>
+							<addSvnKeyWords>true</addSvnKeyWords>
+							<roots>
+								<root>src/main</root>
+								<root>src/test</root>
+							</roots>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				
+			</plugins>
+		</pluginManagement>
+	</build>
 
   <dependencies>
     <dependency>
@@ -21,5 +93,10 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+			<groupId>com.google.code.guice</groupId>
+			<artifactId>guice</artifactId>
+			<version>1.0</version>
+		</dependency>
   </dependencies>
 </project>
